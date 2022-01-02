@@ -1,5 +1,6 @@
 var obj = {};
 var objArr = [];
+document.cookie = [];
 /*
 function copypage1(event)
 {
@@ -14,6 +15,23 @@ window.location.href= "page2.html";
 event.preventDefault();
 
 }
+*/
+/*
+document.getElementById('candidate').addEventListener('change',function () {
+  var end = this.value;
+  console.log("end:"+end);
+  if(end !="Select Candidates"){
+    //document.getElementsByClassName( "card-body" ).removeClass( "hide" );
+    //document.getElementsByClassName('card-body').style.visibility = 'hidden';
+    document.getElementsByClassName("card-body").hidden = true;
+  
+  }
+  else{
+   //  document.getElementsByClassName( "card-body" ).addClass( "hide" );
+   document.getElementsByClassName("card-body").hidden = false;
+}
+}
+);
 */
 document.getElementById('profession-form').addEventListener('submit',function(event) {
 
@@ -83,3 +101,17 @@ localStorage.setItem('nameo',name);
   document.getElementById('table-body').innerHTML=html;
 
 }
+document.getElementById('continue').addEventListener('click', function(event) {
+  if( objArr.length == 0){
+    document.getElementById("modal-body").html("<p>Please select some candidates.</p>");
+    document.getElementById('myModal').modal('show');
+  }else{
+    //$(location).attr('href','show.html?data='+ JSON.stringify(objArr));
+
+    //var workorg = document.getElementById('workorg').value
+  localStorage.setItem('objArr:' + JSON.stringify(objArr));
+
+  window.location.href= "page2.html";
+  }
+  event.preventDefault();
+});
